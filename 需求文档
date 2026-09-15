@@ -1,0 +1,25 @@
+我想做一个食物过敏风险识别的小程序。
+流程是，先对新用户进行问卷调查，然后根据用户的回答，给出用户的过敏风险等级。建立用户档案资料信息。
+再根据用户信息，配合Ai拍照/照片上传识别图中的食物是否有有过敏风险信息。
+
+AI识别接口：
+    baseUrl: "https://maas-api.cmhk.com/v1",
+    auth: "Bearer sk-sxpfjggoakyipxhppfdpbwztxohdiebqnazemihwrgemxdex",
+{
+  "model": "CM-Pub-Qwen3.5-122B",
+  "messages": [
+    {
+      "role": "system",
+      "content": [{"type": "text", "text": "..."}]
+    },
+    {
+      "role": "user",
+      "content": [
+        {"type": "text", "text": "用户提示词..."},
+        {"type": "image_url", "image_url": {"url": "data:image/jpeg;base64,/9j/4AAQ..."}},
+        {"type": "image_url", "image_url": {"url": "data:image/jpeg;base64,/9j/4AAQ..."}}
+      ]
+    }
+  ]
+}
+

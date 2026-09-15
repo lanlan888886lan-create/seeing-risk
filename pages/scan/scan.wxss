@@ -1,0 +1,241 @@
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 60rpx 40rpx 60rpx;
+  background: linear-gradient(180deg, #e8fff5 0%, #f7fffb 45%, #ffffff 100%);
+}
+
+/* 顶部标题 */
+.header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40rpx;
+}
+
+.title {
+  font-size: 56rpx;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 16rpx;
+}
+
+.subtitle {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1b8f68;
+  margin-bottom: 12rpx;
+}
+
+.description {
+  font-size: 26rpx;
+  color: #7a7a7a;
+}
+
+/* 档案摘要栏 */
+.profile-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 24rpx 28rpx;
+  margin-bottom: 28rpx;
+  box-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.05);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.profile-risk {
+  font-size: 26rpx;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+
+.profile-risk-high {
+  color: #d93025;
+}
+
+.profile-risk-medium {
+  color: #e89b00;
+}
+
+.profile-risk-low {
+  color: #16875d;
+}
+
+.profile-allergens {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.profile-edit {
+  font-size: 24rpx;
+  color: #20c997;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* 上传卡片 */
+.upload-card {
+  background: #ffffff;
+  border-radius: 32rpx;
+  padding: 60rpx 36rpx 48rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 16rpx 50rpx rgba(0, 0, 0, 0.06);
+}
+
+.camera {
+  font-size: 90rpx;
+  margin-bottom: 30rpx;
+}
+
+.upload-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #222222;
+  margin-bottom: 16rpx;
+}
+
+.upload-desc {
+  font-size: 26rpx;
+  color: #999999;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+/* 图片预览 */
+.preview-image {
+  width: 100%;
+  height: 420rpx;
+  margin-top: 30rpx;
+  border-radius: 24rpx;
+}
+
+/* 分析结果卡片 */
+.result-card {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 30rpx;
+  padding: 32rpx;
+  border-radius: 28rpx;
+  border: 2rpx solid #eeeeee;
+}
+
+.result-card-high {
+  background: #fff3f3;
+  border-color: #ffd2d2;
+}
+
+.result-card-medium {
+  background: #fff9e8;
+  border-color: #ffe5a3;
+}
+
+.result-card-low {
+  background: #effbf5;
+  border-color: #bfe9d4;
+}
+
+/* 结果标题 */
+.result-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 28rpx;
+}
+
+.risk-badge {
+  font-size: 32rpx;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+}
+
+.risk-high {
+  color: #d93025;
+}
+
+.risk-medium {
+  color: #e89b00;
+}
+
+.risk-low {
+  color: #16875d;
+}
+
+.food-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #222222;
+}
+
+/* 信息行 */
+.result-row {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22rpx 0;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.08);
+}
+
+.result-label {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #555555;
+  flex-shrink: 0;
+  margin-right: 24rpx;
+}
+
+.result-value {
+  font-size: 26rpx;
+  color: #333333;
+  text-align: right;
+  flex: 1;
+}
+
+.conflict-high {
+  color: #d93025;
+  font-weight: 700;
+}
+
+.conflict-medium {
+  color: #e89b00;
+  font-weight: 700;
+}
+
+.conflict-low {
+  color: #16875d;
+  font-weight: 700;
+}
+
+/* 风险说明和建议 */
+.result-section {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin-top: 26rpx;
+}
+
+.result-paragraph {
+  margin-top: 12rpx;
+  font-size: 25rpx;
+  line-height: 1.7;
+  color: #666666;
+}
+
+/* 底部提示 */
+.tips {
+  display: block;
+  margin-top: 36rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #a0a0a0;
+}

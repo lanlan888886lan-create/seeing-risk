@@ -1,0 +1,75 @@
+<view class="page">
+
+  <!-- 有档案 -->
+  <block wx:if="{{profile}}">
+
+    <!-- 风险等级卡片 -->
+    <view class="risk-card risk-card-{{profile.riskType}}">
+      <text class="risk-label">我的过敏风险等级</text>
+      <text class="risk-value">
+        {{profile.riskType === 'high' ? '🔴' : (profile.riskType === 'medium' ? '🟡' : '🟢')}} {{profile.riskLevel}}
+      </text>
+      <text class="risk-score">风险评分：{{profile.riskScore}}</text>
+    </view>
+
+    <!-- 已知过敏原 -->
+    <view class="section-card">
+      <text class="section-title">已知过敏原</text>
+      <view wx:if="{{profile.allergens.length}}" class="allergen-list">
+        <text
+          class="allergen-chip"
+          wx:for="{{profile.allergens}}"
+          wx:key="*this"
+        >{{item}}</text>
+      </view>
+      <text wx:else class="empty-text">无已知过敏原</text>
+    </view>
+
+    <!-- 问卷信息 -->
+    <view class="section-card">
+      <text class="section-title">问卷信息</text>
+
+      <view class="info-row">
+        <text class="info-label">性别</text>
+        <text class="info-value">{{profile.answers.gender}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">年龄段</text>
+        <text class="info-value">{{profile.answers.age}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">食物过敏史</text>
+        <text class="info-value">{{profile.answers.history}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">过敏反应</text>
+        <text class="info-value">{{profile.answers.reactions.join('、')}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">家族过敏史</text>
+        <text class="info-value">{{profile.answers.family}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">过敏性疾病</text>
+        <text class="info-value">{{profile.answers.comorbidity.join('、')}}</text>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="btn-group">
+      <button class="btn btn-primary" bindtap="goScan">去识别食物</button>
+      <button class="btn btn-outline" bindtap="retakeSurvey">重新测评</button>
+      <text class="btn-link" bindtap="clearProfile">清空档案</text>
+    </view>
+
+  </block>
+
+  <!-- 无档案 -->
+  <view wx:else class="empty-card">
+    <text class="empty-icon">📋</text>
+    <text class="empty-title">尚未建立过敏档案</text>
+    <text class="empty-desc">完成问卷测评，让 AI 结合你的档案识别过敏风险</text>
+    <button class="btn btn-primary" bindtap="retakeSurvey">开始测评</button>
+  </view>
+
+</view>

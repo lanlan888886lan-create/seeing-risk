@@ -1,0 +1,110 @@
+<view class="page">
+
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">Seeing Risk</text>
+    <text class="subtitle">看见风险，才能安心</text>
+    <text class="description">AI 食物过敏风险识别</text>
+  </view>
+
+  <!-- 过敏档案摘要 -->
+  <view wx:if="{{profile}}" class="profile-bar">
+    <view class="profile-info">
+      <text class="profile-risk profile-risk-{{profile.riskType}}">{{profile.riskLevel}}</text>
+      <text class="profile-allergens">
+        {{profile.allergens.length ? '过敏原：' + profile.allergens.join('、') : '无已知过敏原'}}
+      </text>
+    </view>
+    <text class="profile-edit" bindtap="goSurvey">重新测评</text>
+  </view>
+
+  <!-- 上传区域 -->
+  <view class="upload-card">
+
+    <view class="camera">📷</view>
+
+    <text class="upload-title">拍摄或上传食物</text>
+
+    <text class="upload-desc">AI 将结合你的过敏档案识别潜在过敏原</text>
+
+    <!-- 选择图片 -->
+    <button class="btn btn-primary" bindtap="chooseImage">选择食物照片</button>
+
+    <!-- 图片预览 -->
+    <image
+      wx:if="{{imagePath}}"
+      class="preview-image"
+      src="{{imagePath}}"
+      mode="aspectFill"
+    ></image>
+
+    <!-- 开始分析 -->
+    <button
+      wx:if="{{imagePath}}"
+      class="btn btn-dark btn-mt"
+      bindtap="analyzeFood"
+      loading="{{analyzing}}"
+      disabled="{{analyzing}}"
+    >
+      {{analyzing ? '正在分析...' : '开始分析'}}
+    </button>
+
+    <!-- 分析结果 -->
+    <view
+      wx:if="{{result}}"
+      class="result-card result-card-{{result.riskType}}"
+    >
+
+      <!-- 风险等级 -->
+      <view class="result-header">
+        <text wx:if="{{result.riskType === 'high'}}" class="risk-badge risk-high">
+          🔴 {{result.riskLevel}}
+        </text>
+        <text wx:elif="{{result.riskType === 'medium'}}" class="risk-badge risk-medium">
+          🟡 {{result.riskLevel}}
+        </text>
+        <text wx:else class="risk-badge risk-low">
+          🟢 {{result.riskLevel}}
+        </text>
+
+        <text class="food-name">{{result.foodName}}</text>
+      </view>
+
+      <!-- 主要配料 -->
+      <view class="result-row">
+        <text class="result-label">主要配料</text>
+        <text class="result-value">{{result.ingredients}}</text>
+      </view>
+
+      <!-- 潜在过敏原 -->
+      <view class="result-row">
+        <text class="result-label">潜在过敏原</text>
+        <text class="result-value">{{result.allergens}}</text>
+      </view>
+
+      <!-- 冲突过敏原 -->
+      <view class="result-row">
+        <text class="result-label">冲突过敏原</text>
+        <text class="result-value conflict-{{result.riskType}}">{{result.conflict}}</text>
+      </view>
+
+      <!-- 风险说明 -->
+      <view class="result-section">
+        <text class="result-label">风险说明</text>
+        <text class="result-paragraph">{{result.reason}}</text>
+      </view>
+
+      <!-- 建议 -->
+      <view class="result-section">
+        <text class="result-label">建议</text>
+        <text class="result-paragraph">{{result.advice}}</text>
+      </view>
+
+    </view>
+
+  </view>
+
+  <!-- 底部提示 -->
+  <text class="tips">根据你的个人过敏档案分析潜在风险，结果仅供参考</text>
+
+</view>

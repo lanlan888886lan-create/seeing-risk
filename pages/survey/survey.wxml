@@ -1,0 +1,58 @@
+<wxs module="m">
+function has(list, item) {
+  return list && list.indexOf(item) > -1
+}
+module.exports.has = has
+</wxs>
+
+<view class="page">
+
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">过敏风险测评</text>
+    <text class="subtitle">完成问卷，建立你的个人过敏档案</text>
+    <text class="description">AI 将结合档案评估食物的过敏风险</text>
+  </view>
+
+  <!-- 问卷题目 -->
+  <view
+    class="question-card"
+    wx:for="{{questions}}"
+    wx:key="key"
+    wx:for-item="q"
+  >
+    <view class="question-title">{{index + 1}}. {{q.title}}</view>
+
+    <view class="options">
+      <view
+        wx:for="{{q.options}}"
+        wx:key="*this"
+        wx:for-item="opt"
+        class="option {{ q.type === 'radio' ? (answers[q.key] === opt ? 'option-active' : '') : (m.has(answers[q.key], opt) ? 'option-active' : '') }}"
+        data-key="{{q.key}}"
+        data-type="{{q.type}}"
+        data-value="{{opt}}"
+        bindtap="onOptionTap"
+      >{{opt}}</view>
+    </view>
+
+    <!-- 第 4 题：选择「其他」后显示文本输入框 -->
+    <block wx:if="{{q.key === 'allergens' && answers.showOtherInput}}">
+      <view class="other-input-wrap">
+        <input
+          class="other-input"
+          type="text"
+          placeholder="请填写其他过敏食物"
+          value="{{answers.otherAllergen}}"
+          bindinput="onOtherAllergenInput"
+          maxlength="20"
+          confirm-type="done"
+        />
+      </view>
+    </block>
+  </view>
+
+  <!-- 提交 -->
+  <button class="btn btn-primary btn-mt-lg" bindtap="onSubmit">生成我的过敏档案</button>
+
+</view>
