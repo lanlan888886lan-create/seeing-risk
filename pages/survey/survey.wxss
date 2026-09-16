@@ -76,17 +76,25 @@
 }
 
 .other-input {
+  display: block;
   box-sizing: border-box;
   width: 100%;
-  padding: 20rpx 24rpx;
-  border-radius: 16rpx;
+  height: 80rpx;
+  padding: 0 28rpx;
   border: 2rpx solid #e3e3e3;
+  border-radius: 16rpx;
   background: #fafafa;
   font-size: 26rpx;
   color: #222222;
 }
 
-.other-input:focus {
+/* 输入框占位符文案 */
+.other-input-ph {
+  color: #b0b0b0;
+}
+
+/* 聚焦态：WXSS 不支持 :focus，改用类名切换 */
+.other-input-focus {
   border-color: #20c997;
   background: #ffffff;
 }

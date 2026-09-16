@@ -85,7 +85,9 @@ Page({
       comorbidity: [],
       reactionSeverity: '',
       allergyConfirmation: ''
-    }
+    },
+    // 「其他」输入框聚焦态（用于切换高亮样式）
+    otherFocused: false
   },
 
   onOptionTap(e) {
@@ -125,6 +127,14 @@ Page({
     const answers = Object.assign({}, this.data.answers)
     answers.otherAllergen = e.detail.value || ''
     this.setData({ answers })
+  },
+
+  onOtherAllergenFocus() {
+    this.setData({ otherFocused: true })
+  },
+
+  onOtherAllergenBlur() {
+    this.setData({ otherFocused: false })
   },
 
   onSubmit() {

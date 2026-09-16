@@ -2,18 +2,30 @@
 const { analyzeFood } = require('../../utils/api')
 const { getProfile } = require('../../utils/profile')
 
+// 档案卡片上的过敏原文案：没有档案或未设置时给出占位文案，避免出现 undefined
+function buildAllergenText(profile) {
+  const list = profile && Array.isArray(profile.allergens)
+    ? profile.allergens.filter(Boolean)
+    : []
+  return list.length ? `过敏原：${list.join('、')}` : '过敏原：暂未设置'
+}
+
 Page({
   data: {
     imagePath: '',
     analyzing: false,
     result: null,
-    profile: null
+    profile: null,
+    allergenText: ''
   },
 
   onShow() {
-    // 每次进入刷新档案（可能在档案页被修改）
+    // 每次进入刷新档案（可能在档案页 / 问卷页被修改）
+    const profile = getProfile()
+    getApp().globalData.profile = profile
     this.setData({
-      profile: getProfile()
+      profile,
+      allergenText: buildAllergenText(profile)
     })
   },
 

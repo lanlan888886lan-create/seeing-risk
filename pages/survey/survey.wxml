@@ -40,11 +40,14 @@ module.exports.has = has
     <block wx:if="{{q.key === 'allergens' && answers.showOtherInput}}">
       <view class="other-input-wrap">
         <input
-          class="other-input"
+          class="other-input {{otherFocused ? 'other-input-focus' : ''}}"
           type="text"
           placeholder="请填写其他过敏食物"
+          placeholder-class="other-input-ph"
           value="{{answers.otherAllergen}}"
           bindinput="onOtherAllergenInput"
+          bindfocus="onOtherAllergenFocus"
+          bindblur="onOtherAllergenBlur"
           maxlength="20"
           confirm-type="done"
         />

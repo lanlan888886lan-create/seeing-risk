@@ -15,7 +15,7 @@
     <!-- 已知过敏原 -->
     <view class="section-card">
       <text class="section-title">已知过敏原</text>
-      <view wx:if="{{profile.allergens.length}}" class="allergen-list">
+      <view wx:if="{{profile.allergens && profile.allergens.length}}" class="allergen-list">
         <text
           class="allergen-chip"
           wx:for="{{profile.allergens}}"

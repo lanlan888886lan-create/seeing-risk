@@ -11,9 +11,7 @@
   <view wx:if="{{profile}}" class="profile-bar">
     <view class="profile-info">
       <text class="profile-risk profile-risk-{{profile.riskType}}">{{profile.riskLevel}}</text>
-      <text class="profile-allergens">
-        {{profile.allergens.length ? '过敏原：' + profile.allergens.join('、') : '无已知过敏原'}}
-      </text>
+      <text class="profile-allergens">{{allergenText}}</text>
     </view>
     <text class="profile-edit" bindtap="goSurvey">重新测评</text>
   </view>
